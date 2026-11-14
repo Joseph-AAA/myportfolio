@@ -1,11 +1,8 @@
 
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import {SiGithub} from "@icons-pack/react-simple-icons";
-import LinkedInIcon from "@/components/ui/LinkedInIcon";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import SkillConstellation from "../ui/SkillConstellation";
 export default function Hero() {

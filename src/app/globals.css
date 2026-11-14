@@ -115,7 +115,7 @@ img {
 ======================================== */
 
 .container-shell {
-  width: min(100% - 3rem, 1280px);
+  width: min(100% - 3rem, 1600px);
   margin-inline: auto;
 }
 
@@ -212,7 +212,7 @@ img {
 
 @media (max-width: 768px) {
   .container-shell {
-    width: min(100% - 2rem, 1280px);
+    width: min(100% - 2rem, 1600px);
   }
 
   .section-padding {
