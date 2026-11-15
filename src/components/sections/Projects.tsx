@@ -1,44 +1,61 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/data/projects";
+import { motion } from "motion/react";
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      className="relative overflow-hidden px-6 py-5 sm:px-10 lg:px-16"
-    >
-      <div className="mx-auto max-w-[1600px]">
+   <section
+  id="projects"
+  className="relative overflow-hidden py-5"
+>
+  <div className="container-shell">
 
         {/* Heading */}
-        <div className="mb-16 text-center">
-          <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-[0.3em] text-purple-400">
-            My Portfolio
-          </span>
+        <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mb-16 text-center"
+          >
+              <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-[0.3em] text-purple-400">
+                My Portfolio
+              </span>
 
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-            Featured <span className="text-gradient">Projects</span>
-          </h2>
+              <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
+                Featured <span className="text-gradient">Projects</span>
+              </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-gray-400">
-            A collection of projects showcasing my skills,
-            creativity and passion for building web applications.
-          </p>
-        </div>
+              <p className="mx-auto mt-5 max-w-2xl text-gray-400">
+                A collection of projects showcasing my skills,
+                creativity and passion for building web applications.
+              </p>
+        </motion.div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
 
-          {projects.map((project) => (
-            <article
-              key={project.id}
-              className="group relative isolate rounded-2xl p-[1px] transition-all duration-500 hover:-translate-y-2"
-              style={
-                {
-                  "--accent": project.accent,
-                } as React.CSSProperties
-              }
-            >
+         {projects.map((project, index) => (
+        <motion.article
+          key={project.id}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{
+            duration: 0.6,
+            delay: index * 0.12,
+            ease: "easeOut",
+          }}
+          whileHover={{ y: -8 }}
+          className="group relative isolate rounded-2xl p-[1px] transition-all duration-500"
+          style={
+            {
+              "--accent": project.accent,
+            } as React.CSSProperties
+          }
+        >
               {/* Animated Border */}
               <div
                 className="pointer-events-none absolute inset-0 -z-10 rounded-2xl opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-100"
@@ -145,7 +162,7 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
 
         </div>

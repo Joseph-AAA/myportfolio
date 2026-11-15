@@ -61,21 +61,21 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h3 className="mb-5 text-sm font-semibold uppercase tracking-widest text-white">
-              Quick Links
-            </h3>
+          <h3 className="mb-5 text-sm font-semibold uppercase tracking-widest text-white">
+  Quick Links
+</h3>
 
-            <nav className="flex flex-wrap gap-x-6 gap-y-3 md:flex-col md:gap-3">
-              {navigation.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="w-fit text-sm text-muted transition-colors duration-300 hover:text-primary"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+<nav className="flex flex-wrap gap-x-6 gap-y-3 md:flex-col md:gap-3">
+  {navigation.map((item) => (
+    <Link
+      key={item.label}
+      href={item.href}
+    className="w-fit text-sm text-muted transition-all duration-300 hover:text-cyan-300 hover:[text-shadow:0_0_5px_rgba(34,211,238,1),0_0_12px_rgba(34,211,238,0.9),0_0_25px_rgba(34,211,238,0.7)]"
+    >
+      {item.label}
+    </Link>
+  ))}
+</nav>
           </motion.div>
 
           {/* Social Links */}

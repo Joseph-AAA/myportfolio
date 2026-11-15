@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 
@@ -19,9 +19,40 @@ const navLinks = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
+  }, []);
+
+  // Detect the currently visible section
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => document.querySelector(link.href))
+      .filter((section): section is Element => section !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              b.intersectionRatio - a.intersectionRatio
+          );
+
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: [0, 0.1, 0.25, 0.5],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -32,22 +63,36 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="#home"
+            onClick={() => setActiveSection("home")}
             className="text-2xl font-bold tracking-tight"
           >
             Joseph<span className="text-primary">.</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden items-center gap-8 md:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-muted transition-colors hover:text-primary"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div className="hidden items-center gap-2 md:flex">
+            {navLinks.map((link) => {
+              const isActive =
+                activeSection === link.href.substring(1);
+
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() =>
+                    setActiveSection(link.href.substring(1))
+                  }
+                  aria-current={isActive ? "location" : undefined}
+                  className={`rounded-lg border px-3 py-2 text-sm font-medium transition-all duration-300 ${
+                    isActive
+                      ? "border-primary/20 bg-primary/10 text-primary"
+                      : "border-transparent text-muted hover:border-primary/10 hover:bg-primary/5 hover:text-primary"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Actions */}
