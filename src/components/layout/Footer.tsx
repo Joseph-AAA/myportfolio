@@ -44,13 +44,15 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
           >
             <Link href="#home" className="inline-block text-2xl font-bold">
-              <span className="text-white">Joseph</span>
+              <span className="text-foreground transition-colors duration-300">
+                Joseph
+              </span>
               <span className="text-cyan-400">.</span>
             </Link>
 
             <p className="mt-4 max-w-sm text-sm leading-7 text-muted">
-              Frontend Developer passionate about building
-              modern, responsive, and user-friendly web applications.
+             
+              Frontend & Full-Stack Developer passionate about building modern, responsive, and user-friendly web applications using React, Next.js, TypeScript, Node.js, and modern web technologies.
             </p>
           </motion.div>
 
@@ -114,14 +116,17 @@ export default function Footer() {
           </p>
 
           <Link
-            href="#home"
-            className="group flex items-center gap-2 text-sm text-gray-400 transition-colors duration-300 hover:text-cyan-400"
-          >
-            Back to top
-            <span className="group flex items-center gap-2 text-sm text-muted transition-colors duration-300 hover:text-primary">
-              ↑
-            </span>
-          </Link>
+              href="#home"
+              className="group flex items-center gap-2 text-sm text-muted
+                transition-all duration-300
+                hover:text-cyan-300
+                hover:[text-shadow:0_0_5px_rgba(34,211,238,1),0_0_12px_rgba(34,211,238,0.9),0_0_25px_rgba(34,211,238,0.7)]"
+            >
+              Back to top
+              <span className="transition-transform duration-300 group-hover:-translate-y-1">
+                ↑
+              </span>
+            </Link>
 
         </div>
 

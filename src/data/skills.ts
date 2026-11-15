@@ -1,7 +1,7 @@
 export const skillGroups = [
   {
     title: "Frontend Development",
-    description: "Building responsive and interactive user interfaces.",
+    description: "Building responsive, accessible, and interactive user interfaces with modern frontend technologies.",
     skills: [
       "HTML5",
       "CSS3",
@@ -12,22 +12,25 @@ export const skillGroups = [
       "Next.js",
       "Tailwind CSS",
       "React Router",
+      "Context API",
     ],
   },
   {
     title: "Backend & Database",
-    description: "Building APIs and working with databases.",
+    description: "Developing REST APIs, handling server-side logic, and managing relational databases.",
     skills: [
       "Node.js",
       "Express.js",
       "Prisma",
-      "PostgreSQL",
       "REST APIs",
+      "PostgreSQL",
+      "JWT Authentication"
+      
     ],
   },
   {
     title: "Tools & Deployment",
-    description: "Development tools and deployment workflows.",
+    description: "Using modern development tools, version control, and deployment platforms to build and deliver applications.",
     skills: [
       "Git",
       "GitHub",

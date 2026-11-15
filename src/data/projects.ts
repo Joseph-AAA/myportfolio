@@ -10,15 +10,16 @@ export interface Project {
   githubUrl?: string;
 }
 
+
 export const projects: Project[] = [
   {
     id: 1,
     title: "My Code Academy",
     category: "Full-Stack Application",
     description:
-      "A student and course management platform with authentication, course management, dashboards and payment features.",
+      "A full-stack student and course management platform featuring secure authentication, course management, student dashboards, and payment functionality.",
     image: "/images/projects/mycodeAcademy.jpg",
-    technologies: ["Next.js", "React", "TypeScript", "Prisma"],
+    technologies: ["React", "Javascript", "Node.js", "Express.js", "Prisma", "Postman", "JWT"],
     accent: "#A78BFA",
     liveUrl: "https://www.mycodeacademy.my/",
     githubUrl: "https://github.com/Joseph-AAA/My_Code_Academy",
@@ -28,9 +29,9 @@ export const projects: Project[] = [
     title: "Nova Gadget Store",
     category: "E-commerce",
     description:
-      "An online shopping application featuring product browsing, authentication, shopping cart and checkout functionality.",
-    image: "/images/projects/shoppingSite.jpg",
-    technologies: ["React", "JavaScript", "CSS", "React Router"],
+      "A responsive e-commerce application that allows users to browse products, manage shopping carts, authenticate accounts, and complete checkout workflows.",
+    image: "/images/projects/shoppingSiteA.jpg",
+    technologies: ["React", "JavaScript", "React Router","Context API", "CSS"],
     accent: "#22D3EE",
     liveUrl: "https://shopping-site-jet.vercel.app/",
     githubUrl: "https://github.com/Joseph-AAA/Shopping_Site",
@@ -40,9 +41,9 @@ export const projects: Project[] = [
     title: "Multi-Step Form",
     category: "Frontend Application",
     description:
-      "An interactive multi-step form with input validation, plan selection, add-ons and order summary.",
+      "An interactive multi-step form featuring input validation, subscription plan selection, optional add-ons, and a dynamic order summary.",
     image: "/images/projects/multi_steplform.jpg",
-    technologies: ["React", "TypeScript", "CSS"],
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
     accent: "#34D399",
     liveUrl: "https://multi-step-form-sooty-one.vercel.app/",
     githubUrl: "https://github.com/Joseph-AAA/multi_step_form",
@@ -52,9 +53,9 @@ export const projects: Project[] = [
     title: "Product List with Cart",
     category: "Shopping Application",
     description:
-      "A product listing application with cart functionality and interactive shopping experience.",
-    image: "/images/projects/productList.jpg",
-    technologies: ["React", "JavaScript", "CSS"],
+      "A product shopping application featuring dynamic product listings, cart management, quantity controls, and an interactive order summary.",
+    image: "/images/projects/productListA.jpg",
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
     accent: "#FB923C",
     liveUrl: "https://product-list-with-cart-liard.vercel.app/",
     githubUrl: "https://github.com/Joseph-AAA/Product-List-With-Cart",
@@ -64,21 +65,21 @@ export const projects: Project[] = [
     title: "Flashcard App",
     category: "Learning Application",
     description:
-      "An interactive flashcard application designed to help users review and practise learning materials.",
+      "An interactive learning application that helps users review and reinforce their knowledge through digital flashcards.",
     image: "/images/projects/flashCard.jpg",
     technologies: ["React", "JavaScript", "CSS"],
     accent: "#F472B6",
     liveUrl: "https://flashcard-jade-three.vercel.app/",
-     githubUrl: "https://github.com/Joseph-AAA/flashcard",
+    githubUrl: "https://github.com/Joseph-AAA/flashcard",
   },
   {
     id: 6,
     title: "QuickLinks",
     category: "Chrome Extension",
     description:
-      "A browser extension that helps users organize and access frequently used website links quickly.",
+      "A Chrome extension that enables users to organize, manage, and quickly access their frequently visited websites.",
     image: "/images/projects/quickLinks.jpg",
-    technologies: ["React", "JavaScript", "CSS"],
+    technologies: ["React", "JavaScript", "Tailwind CSS"],
     accent: "#60A5FA",
     liveUrl: "https://quick-links-chrome-extension.vercel.app/",
     githubUrl: "https://github.com/Joseph-AAA/QuickLinks_ChromeExtension",

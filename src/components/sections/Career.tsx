@@ -2,85 +2,13 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  Code2,
-  Layers3,
-  Rocket,
-  Laptop,
-} from "lucide-react";
-
-const milestones = [
-  {
-    id: "01",
-    title: "Web Development Foundations",
-    subtitle: "Building the fundamentals",
-    description:
-      "Started my web development journey by learning HTML, CSS, and JavaScript. Built a strong foundation in responsive web design, programming fundamentals, and interactive user interfaces.",
-    technologies: ["HTML", "CSS", "JavaScript", "Sass"],
-    icon: Code2,
-    accent: "text-cyan-400",
-    background: "bg-cyan-500/10",
-    position: "left",
-  },
-  {
-    id: "02",
-    title: "Frontend Development",
-    subtitle: "Building modern interfaces",
-    description:
-      "Expanded my frontend skills with React and TypeScript. Learned component-based architecture, state management, React Router, and modern styling techniques while building practical applications.",
-    technologies: [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "React Router",
-    ],
-    icon: Layers3,
-    accent: "text-purple-400",
-    background: "bg-purple-500/10",
-    position: "right",
-  },
-  {
-    id: "03",
-    title: "Full-Stack Project Experience",
-    subtitle: "Turning ideas into applications",
-    description:
-      "Developed My Code Academy, a student course management application. Worked with frontend and backend technologies, authentication, database integration, and email functionality.",
-    technologies: [
-      "React",
-      "Node.js",
-      "Express",
-      "Prisma",
-      "PostgreSQL",
-    ],
-    icon: Rocket,
-    accent: "text-cyan-400",
-    background: "bg-cyan-500/10",
-    position: "left",
-  },
-  {
-    id: "04",
-    title: "Advancing with Next.js",
-    subtitle: "Exploring modern web development",
-    description:
-      "Continuing to strengthen my frontend development skills by learning Next.js and TypeScript, exploring modern application architecture, and building a professional developer portfolio.",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Motion",
-    ],
-    icon: Laptop,
-    accent: "text-purple-400",
-    background: "bg-purple-500/10",
-    position: "right",
-  },
-];
+import {milestones} from "@/data/career";
 
 export default function Career() {
   return (
     <section
       id="career"
-      className="relative overflow-hidden py-20 sm:py-24"
+      className="relative overflow-hidden py-10"
     >
       <div className="container-shell">
 

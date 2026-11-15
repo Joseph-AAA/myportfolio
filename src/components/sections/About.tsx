@@ -9,19 +9,19 @@ const highlights = [
     icon: Code2,
     title: "Frontend Development",
     description:
-      "Building responsive and interactive web applications with modern frontend technologies.",
+      "Creating responsive, accessible, and engaging web applications using modern frontend technologies.",
   },
   {
     icon: Lightbulb,
     title: "Continuous Learning",
     description:
-      "Continuously improving my skills and exploring better ways to build web applications.",
+      "Constantly expanding my technical knowledge, refining my skills, and staying up to date with modern web development practices.",
   },
   {
     icon: Rocket,
     title: "Project Driven",
     description:
-      "Turning ideas into practical projects and learning through real-world development challenges.",
+      "Turning ideas into functional applications, applying technical knowledge, and solving real-world development challenges through hands-on projects.",
   },
 ];
 
@@ -56,19 +56,18 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="md:sticky md:top-28 md:self-start"
           >
-            <div className="relative mx-auto max-w-md">
-              <div className="absolute -inset-4 rounded-[30px] bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl" />
-
-              <div className="glass-card relative overflow-hidden rounded-[30px]">
+           <div className="mx-auto w-full max-w-md">
                 <Image
-                  src="/images/JosephAright.png"
+                  src="/images/JosephAAAA.png"
                   alt="Joseph - Frontend Developer"
                   width={500}
-                  height={750}
-                  className="aspect-[5/5] w-full object-cover object-top"
+                  height={730}
+                className="relative block aspect-square w-full rounded-3xl
+                object-cover object-top
+                transition-all duration-500
+                hover:[filter:drop-shadow(0_0_12px_rgba(34,211,238,0.5))_drop-shadow(0_0_24px_rgba(99,102,241,0.4))]"
                 />
               </div>
-            </div>
           </motion.div>
 
           {/* About content */}
@@ -86,21 +85,15 @@ export default function About() {
 
               <div className="space-y-4 text-center leading-8 text-muted md:text-left">
                 <p>
-                  Hello! I&apos;m Joseph, a frontend developer passionate about
-                  creating responsive, user-friendly, and engaging web
-                  applications.
+                  Hello! I&apos;m Joseph, a frontend developer passionate about building responsive, user-friendly, and engaging web applications.
                 </p>
 
                 <p>
-                  I work with technologies such as React, Next.js, TypeScript,
-                  JavaScript, and Tailwind CSS. I enjoy building projects,
-                  solving problems, and continuously improving my development
-                  skills.
+                  I specialize in modern frontend technologies, including React, Next.js, TypeScript, JavaScript, and Tailwind CSS. Through hands-on projects, I{"'"}ve also gained experience with backend technologies such as Node.js, Express, Prisma, and PostgreSQL.
                 </p>
 
                 <p>
-                  My goal is to create meaningful digital experiences while
-                  growing as a developer and exploring modern web technologies.
+                  I enjoy solving problems, learning new technologies, and turning ideas into practical digital solutions. My goal is to create meaningful user experiences while continuously growing as a developer and expanding my skills across frontend and full-stack development.
                 </p>
               </div>
             </motion.div>
@@ -120,7 +113,8 @@ export default function About() {
                       duration: 0.6,
                       delay: index * 0.15,
                     }}
-                    className="glass-card flex gap-5 rounded-2xl p-5 transition-colors hover:border-primary/50"
+                    className="glass-card flex gap-5 rounded-2xl p-5 
+                              transition-all duration-500 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_0_15px_rgba(34,211,238,0.25),0_0_30px_rgba(34,211,238,0.15)]"
                   >
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                       <Icon size={24} />

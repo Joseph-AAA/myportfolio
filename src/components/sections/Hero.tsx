@@ -24,25 +24,27 @@ export default function Hero() {
              HELLO, I{"'"}M JOSEPH
           </p>
 
-          <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            Building Digital
-            <br />
-            Experiences with
-            <br />
-            <span className="text-gradient">
-              Modern Technology.
-            </span>
-          </h1>
+         <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+             Building Digital
+          <br />
+              Experiences with
+          <br />
+          <span className="text-gradient">
+            Modern Technology.
+          </span>
+        </h1>
 
-          <h2 className="mt-6 text-xl font-semibold text-foreground sm:text-2xl">
-            Frontend Developer
-          </h2>
+        <h2 className="mt-6 text-xl font-semibold text-foreground sm:text-2xl">
+          Frontend Developer
+        </h2>
 
-          <p className="mx-auto mt-5 max-w-xl leading-8 text-muted md:mx-0">
-            I build responsive and user-friendly web applications
-            using React, Next.js, TypeScript and modern web technologies.
-            I enjoy turning ideas into functional digital experiences.
-          </p>
+        <p className="mx-auto mt-5 max-w-xl leading-8 text-muted md:mx-0">
+          I specialize in building responsive, user-friendly web
+          applications using React, Next.js, TypeScript, and modern
+          frontend technologies. With experience in full-stack
+          development, I enjoy turning ideas into functional
+          digital experiences.
+        </p>
 
           {/* Buttons */}
           <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
@@ -58,7 +60,7 @@ export default function Hero() {
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3 font-semibold transition-colors hover:border-primary hover:text-primary"
             >
-              Contact Me
+                Let{"'"}s Build Together
             </Link>
           </div>
 

@@ -82,15 +82,17 @@ export default function Projects() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#101018]/60 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#101018]/60 to-transparent" />
 
                   {/* Category */}
-                  <span
-                    className="absolute left-4 top-4 rounded-full border px-3 py-1.5 text-xs font-medium backdrop-blur-md"
+                 <span
+                    className="absolute left-4 top-4 rounded-full border px-3 py-1.5
+                      text-xs font-bold tracking-wide backdrop-blur-md shadow-sm"
                     style={{
                       color: project.accent,
-                      borderColor: `${project.accent}55`,
-                      backgroundColor: `${project.accent}18`,
+                      borderColor: `${project.accent}CC`,
+                      backgroundColor: "#111827",
+                      boxShadow: `0 0 12px ${project.accent}35`,
                     }}
                   >
                     {project.category}
