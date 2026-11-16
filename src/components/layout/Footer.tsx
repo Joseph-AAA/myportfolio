@@ -51,8 +51,7 @@ export default function Footer() {
             </Link>
 
             <p className="mt-4 max-w-sm text-sm leading-7 text-muted">
-             
-              Frontend & Full-Stack Developer passionate about building modern, responsive, and user-friendly web applications using React, Next.js, TypeScript, Node.js, and modern web technologies.
+              Frontend & Full-Stack Developer passionate about building responsive, user-friendly web applications using React, Next.js, TypeScript, Node.js, and modern web technologies.
             </p>
           </motion.div>
 

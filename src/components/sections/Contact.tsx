@@ -49,9 +49,7 @@ export default function Contact() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl leading-7 text-muted">
-            Have a project in mind or an opportunity to discuss?
-            I{"'"}d love to hear from you. Let{"'"}s connect and create
-            something meaningful together.
+           I{"'"}m open to discussing frontend and full-stack development opportunities, professional collaborations, and interesting projects. I{"'"}d be happy to connect with employers, recruiters, and fellow developers.
           </p>
         </motion.div>
 
@@ -72,7 +70,7 @@ export default function Contact() {
               </h3>
 
               <p className="mt-4 leading-8 text-muted">
-                I{"'"}m open to frontend development opportunities and collaborations on meaningful web projects. I{"'"}m also interested in opportunities where I can apply my full-stack project experience. Whether you have an exciting idea or an opportunity to discuss, I{"'"}d love to hear from you. Feel free to get in touch!
+                I{"'"}m eager to apply my technical skills, contribute to development teams, and take on new challenges while continuing to grow as a developer. Whether you{"'"}re looking for a developer to join your team or someone to collaborate with on a project, I{"'"}d love to hear from you.
               </p>
             </div>
 
@@ -80,22 +78,26 @@ export default function Contact() {
             <div className="space-y-5">
 
               {/* Email */}
-              <div className="cursor-pointer glass-card group flex items-center gap-5 rounded-2xl border border-border p-5 transition-all duration-500 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_0_15px_rgba(34,211,238,0.25),0_0_30px_rgba(34,211,238,0.15)]">
+            <a
+                href="mailto:jj.joseph.aaa@gmail.com"
+                aria-label="Send an email to jj.joseph.aaa@gmail.com"
+                className="cursor-pointer glass-card group flex items-center gap-5 rounded-2xl border border-border p-5 transition-all duration-500 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_0_15px_rgba(34,211,238,0.25),0_0_30px_rgba(34,211,238,0.15)]"
+              >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                   <Mail size={23} />
                   </div>
 
-                <div>
+                <div >
                   <p className="text-sm text-muted">Email</p>
 
-                  <a
-                    href="jj.joseph.aaa@gmail.com"
+                  <span
+                    
                     className="mt-1 block font-medium text-foreground transition-colors hover:text-primary"
                   >
-                    your-email@example.com
-                  </a>
+                    jj.joseph.aaa@gmail.com
+                  </span>
                 </div>
-              </div>
+              </a>
 
               {/* Location */}
               <div className="glass-card group flex items-center gap-5 rounded-2xl border border-border p-5 transition-all duration-500 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_0_15px_rgba(34,211,238,0.25),0_0_30px_rgba(34,211,238,0.15)]">

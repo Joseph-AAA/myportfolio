@@ -7,24 +7,23 @@ import { Code2, Lightbulb, Rocket } from "lucide-react";
 const highlights = [
   {
     icon: Code2,
-    title: "Frontend Development",
+    title: "Frontend & Full-Stack Development",
     description:
-      "Creating responsive, accessible, and engaging web applications using modern frontend technologies.",
+      "Building responsive, user-friendly web applications and applying frontend and backend technologies to develop functional solutions.",
   },
   {
     icon: Lightbulb,
     title: "Continuous Learning",
     description:
-      "Constantly expanding my technical knowledge, refining my skills, and staying up to date with modern web development practices.",
+      "Actively improving my technical skills, embracing constructive feedback, and learning modern development practices to grow as a developer.",
   },
   {
     icon: Rocket,
-    title: "Project Driven",
+    title: "Teamwork & Collaboration",
     description:
-      "Turning ideas into functional applications, applying technical knowledge, and solving real-world development challenges through hands-on projects.",
+      "Working collaboratively, taking responsibility for assigned tasks, sharing ideas, and learning from experienced developers to achieve shared goals.",
   },
 ];
-
 export default function About() {
   return (
     <section id="about" className="relative pt-8 pb-16 sm:pt-10 sm:pb-24">
@@ -83,19 +82,38 @@ export default function About() {
                  <span className="text-gradient">Web Development</span>
               </h3>
 
-              <div className="space-y-4 text-center leading-8 text-muted md:text-left">
+             <div className="space-y-4 text-center leading-8 text-muted md:text-left">
                 <p>
-                  Hello! I&apos;m Joseph, a frontend developer passionate about building responsive, user-friendly, and engaging web applications.
+                  Hello! I&apos;m Joseph, a developer focused on building modern
+                  web applications, with a strong foundation in frontend
+                  development and practical experience in full-stack development.
                 </p>
 
                 <p>
-                  I specialize in modern frontend technologies, including React, Next.js, TypeScript, JavaScript, and Tailwind CSS. Through hands-on projects, I{"'"}ve also gained experience with backend technologies such as Node.js, Express, Prisma, and PostgreSQL.
+                  I work with React, Next.js, TypeScript, and Tailwind CSS to
+                  create responsive, user-friendly interfaces. My experience
+                  also extends to backend development, where I&apos;ve worked
+                  with Node.js, Express.js, Prisma, and PostgreSQL to build APIs,
+                  integrate databases, and implement application functionality.
                 </p>
 
                 <p>
-                  I enjoy solving problems, learning new technologies, and turning ideas into practical digital solutions. My goal is to create meaningful user experiences while continuously growing as a developer and expanding my skills across frontend and full-stack development.
+                  Through hands-on projects, I&apos;ve gained practical
+                  experience developing complete applications, integrating
+                  frontend and backend systems, implementing authentication,
+                  and working with database-driven features.
                 </p>
-              </div>
+
+                <p>
+                  As an aspiring developer, I value continuous learning,
+                  constructive feedback, and teamwork. I&apos;m eager to learn
+                  from experienced developers, contribute to shared goals,
+                  take ownership of my responsibilities, and continuously
+                  improve my technical skills. I believe good communication,
+                  mutual respect, and a willingness to learn are essential
+                to becoming a valuable team member.
+              </p>
+            </div>
             </motion.div>
 
             {/* Highlight cards */}

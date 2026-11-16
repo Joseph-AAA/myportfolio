@@ -30,9 +30,7 @@ export default function Career() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl leading-7 text-muted">
-            Every project and learning experience has helped me
-            grow as a developer. Here is my journey into modern
-            web development.
+            Every learning experience and project has contributed to my growth as a developer. Explore my journey from building web development fundamentals to developing full-stack applications and exploring modern technologies.
           </p>
         </motion.div>
 

@@ -30,8 +30,10 @@ export default function Skills() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl leading-8 text-muted">
-            Technologies and tools I use to build modern,
-            responsive, and user-friendly web applications.
+            My technical toolkit spans frontend and backend development,
+            including the technologies and tools I use to build responsive
+            interfaces, develop application functionality, and integrate
+            complete web solutions.
           </p>
         </motion.div>
 
@@ -48,10 +50,10 @@ export default function Skills() {
                 delay: index * 0.15,
               }}
              className="glass-card rounded-2xl border border-border p-6
-  transition-all duration-500
-  hover:-translate-y-1
-  hover:border-primary/50
-  hover:shadow-[0_0_20px_rgba(34,211,238,0.25),0_0_45px_rgba(99,102,241,0.22)]"
+                        transition-all duration-500
+                        hover:-translate-y-1
+                        hover:border-primary/50
+                        hover:shadow-[0_0_20px_rgba(34,211,238,0.25),0_0_45px_rgba(99,102,241,0.22)]"
             >
               <h3 className="mb-3 text-xl font-bold">
                 {group.title}

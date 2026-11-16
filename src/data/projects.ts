@@ -12,25 +12,32 @@ export interface Project {
 
 
 export const projects: Project[] = [
-  {
-    id: 1,
-    title: "My Code Academy",
-    category: "Full-Stack Application",
-    description:
-      "A full-stack student and course management platform featuring secure authentication, course management, student dashboards, and payment functionality.",
-    image: "/images/projects/mycodeAcademy.jpg",
-    technologies: ["React", "Javascript", "Node.js", "Express.js", "Prisma", "Postman", "JWT"],
-    accent: "#A78BFA",
-    liveUrl: "https://www.mycodeacademy.my/",
-    githubUrl: "https://github.com/Joseph-AAA/My_Code_Academy",
-  },
+ {
+  id: 1,
+  title: "My Code Academy",
+  category: "Full-Stack Application",
+  description:
+    "Developed a full-stack student and course management platform featuring secure authentication, an admin dashboard for managing courses and students, student course access, database integration, and payment functionality.",
+  image: "/images/projects/mycodeAcademy.jpg",
+  technologies: [
+    "React",
+    "JavaScript",
+    "Node.js",
+    "Express.js",
+    "Prisma",
+    "PostgreSQL",
+    "JWT",
+  ],
+  accent: "#A78BFA",
+  liveUrl: "https://www.mycodeacademy.my/",
+  githubUrl: "https://github.com/Joseph-AAA/My_Code_Academy",
+},
   {
     id: 2,
     title: "Nova Gadget Store",
     category: "E-commerce",
-    description:
-      "A responsive e-commerce application that allows users to browse products, manage shopping carts, authenticate accounts, and complete checkout workflows.",
-    image: "/images/projects/shoppingSiteA.jpg",
+   description:
+     "Developed a responsive e-commerce application with product browsing, user authentication, shopping cart management, and checkout functionality. Used React Context API to manage shared application state.",    image: "/images/projects/shoppingSiteA.jpg",
     technologies: ["React", "JavaScript", "React Router","Context API", "CSS"],
     accent: "#22D3EE",
     liveUrl: "https://shopping-site-jet.vercel.app/",
@@ -40,9 +47,8 @@ export const projects: Project[] = [
     id: 3,
     title: "Multi-Step Form",
     category: "Frontend Application",
-    description:
-      "An interactive multi-step form featuring input validation, subscription plan selection, optional add-ons, and a dynamic order summary.",
-    image: "/images/projects/multi_steplform.jpg",
+   description:
+        "Built a multi-step subscription form with input validation, interactive plan selection, optional add-ons, and a dynamic order summary using reusable React components.",  image: "/images/projects/multi_steplform.jpg",
     technologies: ["React", "TypeScript", "Tailwind CSS"],
     accent: "#34D399",
     liveUrl: "https://multi-step-form-sooty-one.vercel.app/",
@@ -53,8 +59,7 @@ export const projects: Project[] = [
     title: "Product List with Cart",
     category: "Shopping Application",
     description:
-      "A product shopping application featuring dynamic product listings, cart management, quantity controls, and an interactive order summary.",
-    image: "/images/projects/productListA.jpg",
+       "Developed an interactive product shopping interface featuring dynamic product listings, cart management, quantity controls, and real-time order summary updates.",    image: "/images/projects/productListA.jpg",
     technologies: ["React", "TypeScript", "Tailwind CSS"],
     accent: "#FB923C",
     liveUrl: "https://product-list-with-cart-liard.vercel.app/",
@@ -64,9 +69,8 @@ export const projects: Project[] = [
     id: 5,
     title: "Flashcard App",
     category: "Learning Application",
-    description:
-      "An interactive learning application that helps users review and reinforce their knowledge through digital flashcards.",
-    image: "/images/projects/flashCard.jpg",
+   description:
+            "Built an interactive flashcard application that enables users to review learning materials, test their knowledge, and reinforce concepts through digital flashcards.",   image: "/images/projects/flashCard.jpg",
     technologies: ["React", "JavaScript", "CSS"],
     accent: "#F472B6",
     liveUrl: "https://flashcard-jade-three.vercel.app/",
@@ -77,8 +81,7 @@ export const projects: Project[] = [
     title: "QuickLinks",
     category: "Chrome Extension",
     description:
-      "A Chrome extension that enables users to organize, manage, and quickly access their frequently visited websites.",
-    image: "/images/projects/quickLinks.jpg",
+          "Developed a Chrome extension that helps users organize frequently visited websites, manage saved links, and access their favorite resources efficiently.",   image: "/images/projects/quickLinks.jpg",
     technologies: ["React", "JavaScript", "Tailwind CSS"],
     accent: "#60A5FA",
     liveUrl: "https://quick-links-chrome-extension.vercel.app/",

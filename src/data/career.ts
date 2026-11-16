@@ -13,7 +13,7 @@ export const milestones = [
     title: "Web Development Foundations",
     subtitle: "Building the fundamentals",
     description:
-      "Built a strong foundation in web development by learning HTML, CSS, and JavaScript. Developed an understanding of responsive web design, core programming concepts, and interactive user interfaces through hands-on practice.",
+      "Built a strong foundation in web development through learning HTML, CSS, and JavaScript. Gained practical experience with responsive web design, programming fundamentals, and creating interactive user interfaces through hands-on projects.",
     technologies: ["HTML", "CSS", "JavaScript", "Sass"],
     icon: Code2,
     accent: "text-cyan-400",
@@ -25,7 +25,7 @@ export const milestones = [
     title: "Frontend Development",
     subtitle: "Building modern interfaces",
     description:
-      "Expanded my frontend development skills through React and TypeScript. Gained practical experience with component-based architecture, state management, routing, and modern styling while building interactive and responsive applications.",
+      "Expanded my frontend development skills through React and TypeScript. Gained practical experience with component-based architecture, state management, routing, and modern styling while developing interactive, responsive applications through hands-on projects..",
     technologies: [
       "React",
       "TypeScript",
@@ -42,7 +42,7 @@ export const milestones = [
     title: "Full-Stack Project Experience",
     subtitle: "Turning ideas into applications",
     description:
-      "Applied my frontend and backend knowledge to develop My Code Academy, a student and course management platform. Implemented authentication, REST APIs, database integration, and email functionality using modern web technologies.",
+      "Applied my frontend and backend knowledge to develop My Code Academy, a student and course management platform. Built and integrated REST APIs, implemented authentication, connected the application to a PostgreSQL database, and integrated email functionality to support key application workflows.",
     technologies: [
       "React",
       "Node.js",
@@ -60,7 +60,7 @@ export const milestones = [
     title: "Advancing with Next.js",
     subtitle: "Exploring modern web development",
     description:
-      "Continuing to expand my frontend expertise by exploring Next.js, TypeScript, and modern application architecture. Currently applying these technologies to build a professional portfolio and strengthen my ability to develop scalable web applications.",
+      "Continuing to expand my frontend expertise by learning Next.js, TypeScript, and modern application architecture. Currently applying these technologies to build a professional portfolio, deepen my understanding of modern web development practices, and develop more scalable applications.",
     technologies: [
       "Next.js",
       "TypeScript",

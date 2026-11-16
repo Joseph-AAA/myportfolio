@@ -35,15 +35,11 @@ export default function Hero() {
         </h1>
 
         <h2 className="mt-6 text-xl font-semibold text-foreground sm:text-2xl">
-          Frontend Developer
+          Frontend & Full-Stack Developer
         </h2>
 
         <p className="mx-auto mt-5 max-w-xl leading-8 text-muted md:mx-0">
-          I specialize in building responsive, user-friendly web
-          applications using React, Next.js, TypeScript, and modern
-          frontend technologies. With experience in full-stack
-          development, I enjoy turning ideas into functional
-          digital experiences.
+     I build responsive, user-friendly web applications using React, Next.js, and TypeScript, with practical experience in backend development using Node.js, Express.js, and PostgreSQL. I enjoy turning ideas into functional applications by combining thoughtful user experiences with reliable application functionality.
         </p>
 
           {/* Buttons */}

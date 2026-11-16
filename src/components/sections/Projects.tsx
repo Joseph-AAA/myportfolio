@@ -1,10 +1,36 @@
-"use client"
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/data/projects";
 import { motion } from "motion/react";
-
+import { Copy, Check, ShieldCheck } from "lucide-react";
 export default function Projects() {
+  const [showAdminDemo, setShowAdminDemo] = useState(false);
+  const [copiedField, setCopiedField] = useState("");
+
+  const demoCredentials = {
+    email: "testadmin@gmail.com",
+    password: "testAdmin@19",
+  };
+
+  const copyCredential = async (
+    value: string,
+    field: string
+  ) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopiedField(field);
+
+      window.setTimeout(() => {
+        setCopiedField("");
+      }, 2000);
+    } catch (error) {
+      console.error("Unable to copy credential:", error);
+    }
+  };
+
   return (
    <section
   id="projects"
@@ -29,8 +55,7 @@ export default function Projects() {
               </h2>
 
               <p className="mx-auto mt-5 max-w-2xl text-gray-400">
-                A collection of projects showcasing my skills,
-                creativity and passion for building web applications.
+                 A selection of projects demonstrating my practical experience in frontend and full-stack development, problem-solving, and building functional web applications using modern technologies.
               </p>
         </motion.div>
 
@@ -132,36 +157,137 @@ export default function Projects() {
                   </div>
 
                   {/* Links */}
-                  <div className="mt-auto flex gap-3">
+             
+<div className="relative mt-auto flex flex-wrap gap-3">
 
-                    {project.liveUrl && (
-                      <Link
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex flex-1 items-center justify-center gap-2 rounded-lg border px-4 py-3 text-sm font-semibold transition-all duration-300 hover:brightness-125"
-                        style={{
-                          color: project.accent,
-                          borderColor: `${project.accent}55`,
-                          backgroundColor: `${project.accent}12`,
-                        }}
-                      >
-                        Live Demo <span>↗</span>
-                      </Link>
-                    )}
+  {project.liveUrl && (
+    <Link
+      href={project.liveUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex flex-1 items-center justify-center gap-2 rounded-lg border px-4 py-3 text-sm font-semibold transition-all duration-300 hover:brightness-125"
+      style={{
+        color: project.accent,
+        borderColor: `${project.accent}55`,
+        backgroundColor: `${project.accent}12`,
+      }}
+    >
+      Live Demo <span>↗</span>
+    </Link>
+  )}
 
-                    {project.githubUrl && (
-                      <Link
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground transition-all duration-300 hover:border-primary hover:text-primary"
-                      >
-                        GitHub ↗
-                      </Link>
-                    )}
+  {project.githubUrl && (
+    <Link
+      href={project.githubUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center justify-center rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground transition-all duration-300 hover:border-primary hover:text-primary"
+    >
+      GitHub ↗
+    </Link>
+  )}
 
-                  </div>
+  {project.title === "My Code Academy" && (
+    <button
+      type="button"
+      onClick={() => setShowAdminDemo((prev) => !prev)}
+      aria-expanded={showAdminDemo}
+      className="flex w-full items-center justify-center gap-2 rounded-lg border border-cyan-400/40 bg-cyan-400/10 px-4 py-3 text-sm font-semibold text-cyan-400 transition-all duration-300 hover:border-cyan-400 hover:bg-cyan-400/20"
+    >
+      <ShieldCheck size={17} />
+      Admin Demo
+    </button>
+  )}
+
+  {/* Admin Demo Popover */}
+  {project.title === "My Code Academy" && showAdminDemo && (
+    <div className="absolute bottom-full right-0 z-30 mb-3 w-full max-w-[320px] rounded-xl border border-cyan-400/30 bg-card p-5 shadow-xl shadow-cyan-500/10">
+
+      <div className="mb-3 flex items-center gap-2">
+        <ShieldCheck size={19} className="text-cyan-400" />
+
+        <h4 className="font-semibold text-foreground">
+          Admin Demo Access
+        </h4>
+      </div>
+
+      <p className="mb-4 text-xs leading-5 text-muted">
+        Use these credentials to explore the My Code Academy
+        admin dashboard.
+      </p>
+
+      {/* Email */}
+      <div className="mb-3">
+        <label className="mb-1 block text-xs font-medium text-muted">
+          Demo Email
+        </label>
+
+        <div className="flex items-center gap-2 rounded-lg border border-border bg-background p-2.5">
+          <span className="min-w-0 flex-1 truncate text-xs text-foreground">
+            {demoCredentials.email}
+          </span>
+
+          <button
+            type="button"
+            onClick={() =>
+              copyCredential(demoCredentials.email, "email")
+            }
+            aria-label="Copy demo email"
+            className="shrink-0 text-muted transition-colors hover:text-cyan-400"
+          >
+            {copiedField === "email" ? (
+              <Check size={16} className="text-green-400" />
+            ) : (
+              <Copy size={16} />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Password */}
+      <div className="mb-4">
+        <label className="mb-1 block text-xs font-medium text-muted">
+          Demo Password
+        </label>
+
+        <div className="flex items-center gap-2 rounded-lg border border-border bg-background p-2.5">
+          <span className="min-w-0 flex-1 truncate text-xs text-foreground">
+            {demoCredentials.password}
+          </span>
+
+          <button
+            type="button"
+            onClick={() =>
+              copyCredential(demoCredentials.password, "password")
+            }
+            aria-label="Copy demo password"
+            className="shrink-0 text-muted transition-colors hover:text-cyan-400"
+          >
+            {copiedField === "password" ? (
+              <Check size={16} className="text-green-400" />
+            ) : (
+              <Copy size={16} />
+            )}
+          </button>
+        </div>
+      </div>
+
+      <p className="text-[11px] leading-5 text-muted">
+        Demo environment. Changes may be reset periodically.
+      </p>
+
+      <button
+        type="button"
+        onClick={() => setShowAdminDemo(false)}
+        className="mt-3 w-full rounded-lg border border-red-400/20 bg-red-400/10 py-2 text-xs font-medium text-red-400 transition-all duration-300 hover:border-red-400/40 hover:bg-red-400/20 hover:text-red-300"
+      >
+        Close
+      </button>
+
+    </div>
+  )}
+
+</div>
                 </div>
               </div>
             </motion.article>
