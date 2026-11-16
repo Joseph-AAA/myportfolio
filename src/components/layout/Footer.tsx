@@ -3,6 +3,7 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 
 const navigation = [
   { label: "Home", href: "#home" },
@@ -24,6 +25,23 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setShowBackToTop(window.scrollY > 50);
+  };
+
+  handleScroll();
+
+  window.addEventListener("scroll", handleScroll, {
+    passive: true,
+  });
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
   const currentYear = 2026;
 
   return (
@@ -62,21 +80,21 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-          <h3 className="mb-5 text-sm font-semibold uppercase tracking-widest text-white">
-  Quick Links
-</h3>
+          <h3 className="mb-5 text-sm font-semibold uppercase tracking-widest text-foreground">
+            Quick Links
+          </h3>
 
-<nav className="flex flex-wrap gap-x-6 gap-y-3 md:flex-col md:gap-3">
-  {navigation.map((item) => (
-    <Link
-      key={item.label}
-      href={item.href}
-    className="w-fit text-sm text-muted transition-all duration-300 hover:text-cyan-300 hover:[text-shadow:0_0_5px_rgba(34,211,238,1),0_0_12px_rgba(34,211,238,0.9),0_0_25px_rgba(34,211,238,0.7)]"
-    >
-      {item.label}
-    </Link>
-  ))}
-</nav>
+          <nav className="flex flex-wrap gap-x-6 gap-y-3 md:flex-col md:gap-3">
+            {navigation.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+              className="w-fit text-sm text-muted transition-all duration-300 hover:text-cyan-300 hover:[text-shadow:0_0_5px_rgba(34,211,238,1),0_0_12px_rgba(34,211,238,0.9),0_0_25px_rgba(34,211,238,0.7)]"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
           </motion.div>
 
           {/* Social Links */}
@@ -86,7 +104,7 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="mb-5 text-sm font-semibold uppercase tracking-widest text-white">
+            <h3 className="mb-5 text-sm font-semibold uppercase tracking-widest text-foreground">
               Connect With Me
             </h3>
 
@@ -113,19 +131,24 @@ export default function Footer() {
           <p className="text-sm text-muted">
             © {currentYear} Joseph. All rights reserved.
           </p>
-
-          <Link
-              href="#home"
-              className="group flex items-center gap-2 text-sm text-muted
-                transition-all duration-300
-                hover:text-cyan-300
-                hover:[text-shadow:0_0_5px_rgba(34,211,238,1),0_0_12px_rgba(34,211,238,0.9),0_0_25px_rgba(34,211,238,0.7)]"
+            {showBackToTop && (
+              <button
+              type="button"
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
+              aria-label="Back to top"
+              className="group fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full border border-primary/30 bg-background/90 px-4 py-3 text-sm font-medium text-muted shadow-[0_0_15px_rgba(34,211,238,0.15)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:text-cyan-300 hover:shadow-[0_0_25px_rgba(34,211,238,0.3)]"
             >
               Back to top
               <span className="transition-transform duration-300 group-hover:-translate-y-1">
                 ↑
               </span>
-            </Link>
+            </button>
+            )}
 
         </div>
 

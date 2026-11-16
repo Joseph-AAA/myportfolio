@@ -5,81 +5,119 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import SkillConstellation from "../ui/SkillConstellation";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
 export default function Hero() {
+  const [showIndicator, setShowIndicator] = useState(true);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setShowIndicator(window.scrollY < 50);
+  };
+
+  handleScroll();
+
+  window.addEventListener("scroll", handleScroll, {
+    passive: true,
+  });
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
   return (
     <section
       id="home"
-      className="background-glow relative flex min-h-screen items-center overflow-hidden pt-24"
+      className="scroll-mt-20 background-glow relative flex min-h-screen items-center overflow-hidden pb-24 pt-24 lg:pb-20"
     >
-      <div className="container-shell grid items-center gap-14 py-5 md:grid-cols-2">
+      <div className="container-shell grid items-center gap-10 py-4 lg:grid-cols-2 lg:gap-14">
 
         {/* LEFT: Introduction */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="order-2 text-center md:order-1 md:text-left"
+          className="order-2 text-center lg:order-1 lg:text-left"
         >
-          <p className="mb-5 font-medium tracking-widest text-primary">
-             HELLO, I{"'"}M JOSEPH
-          </p>
+            <p className="mb-5 font-medium tracking-widest text-primary">
+              HELLO, I{"'"}M JOSEPH
+            </p>
 
-         <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-             Building Digital
-          <br />
-              Experiences with
-          <br />
-          <span className="text-gradient">
-            Modern Technology.
-          </span>
-        </h1>
+            <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+                Building Digital
+                <br />
+                    Experiences with
+                <br />
+                <span className="text-gradient">
+                  Modern Technology.
+                </span>
+            </h1>
 
-        <h2 className="mt-6 text-xl font-semibold text-foreground sm:text-2xl">
-          Frontend & Full-Stack Developer
-        </h2>
+            <h2 className="mt-6 text-xl font-semibold text-foreground sm:text-2xl">
+              Frontend & Full-Stack Developer
+            </h2>
 
-        <p className="mx-auto mt-5 max-w-xl leading-8 text-muted md:mx-0">
-     I build responsive, user-friendly web applications using React, Next.js, and TypeScript, with practical experience in backend development using Node.js, Express.js, and PostgreSQL. I enjoy turning ideas into functional applications by combining thoughtful user experiences with reliable application functionality.
-        </p>
+            <p className="mx-auto mt-5 max-w-xl leading-8 text-muted lg:mx-0">
+                I build responsive, user-friendly web applications using React, Next.js, and TypeScript, with practical experience in backend development using Node.js, Express.js, and PostgreSQL. I enjoy turning ideas into functional applications by combining thoughtful user experiences with reliable application functionality.
+            </p>
 
-          {/* Buttons */}
-          <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
-            <Link
-              href="#projects"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 font-semibold text-slate-950 transition-transform hover:-translate-y-1"
-            >
-              View My Projects
-              <ArrowUpRight size={18} />
-            </Link>
+            {/* Buttons */}
+            <div className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
+              <Link
+                href="#projects"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 font-semibold text-slate-950 transition-transform hover:-translate-y-1"
+              >
+                View My Projects
+                <ArrowUpRight size={18} />
+              </Link>
 
-            <Link
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3 font-semibold transition-colors hover:border-primary hover:text-primary"
-            >
-                Let{"'"}s Build Together
-            </Link>
-          </div>
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3 font-semibold transition-colors hover:border-primary hover:text-primary"
+              >
+                  Let{"'"}s Build Together
+              </Link>
+            </div>
 
-          {/* Social Links */}
-          {/* <div className="mt-10 flex justify-center gap-5 md:justify-start">
-            <Link
-              href="https://github.com/Joseph-AAA"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub profile"
-              className="text-muted transition-colors hover:text-primary"
-            >
-             <SiGithub size={24} />
-            </Link>
+            {/* Social Links */}
+            <div className="mt-8 flex justify-center gap-6 lg:mt-10 lg:justify-start">
+             
+                {/* GitHub */}
+                <Link
+                  href="https://github.com/Joseph-AAA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub profile"
+                  className="group inline-flex rounded-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <Image
+                    src="/images/skills/github.png"
+                    alt="GitHub"
+                    width={48}
+                    height={48}
+                    className="h-10 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.25)] transition-all duration-300 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.65)] sm:h-12 sm:w-auto"
+                  />
+                </Link>
 
-            <Link
-              href="#"
-              aria-label="LinkedIn profile"
-              className="text-muted transition-colors hover:text-primary"
-            >
-              <LinkedInIcon size={24} />
-            </Link>
-          </div> */}
+                {/* LinkedIn */}
+                <Link
+                  href="https://www.linkedin.com/in/joseph-aaa-63885a426/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn profile"
+                  className="group inline-flex rounded-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <Image
+                    src="/images/skills/LinkeIn.png"
+                    alt="LinkedIn"
+                    width={48}
+                    height={48}
+                    className="h-10 w-auto object-contain drop-shadow-[0_0_8px_rgba(10,102,194,0.35)] transition-all duration-300 group-hover:drop-shadow-[0_0_16px_rgba(10,102,194,0.75)] sm:h-12 sm:w-auto"
+                  />
+                </Link>
+
+            </div>
         </motion.div>
 
         {/* RIGHT: Portrait */}
@@ -87,7 +125,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: 40, scale: 0.95 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 0.9 }}
-          className="order-1 flex justify-center md:order-2"
+          className="order-1 flex justify-center lg:order-2"
         >
           <div className="relative w-full max-w-[490px]">
 
@@ -96,14 +134,7 @@ export default function Hero() {
 
             {/* Image Frame */}
             <div className="relative flex w-full items-center justify-center overflow-visible">
-              {/* <Image
-                src="/images/JosephA.png"
-                alt="Joseph - Frontend Developer"
-                width={500}
-                height={600}
-                priority
-                className="aspect-[5/6] w-full object-cover object-top"
-              /> */}
+             
               <SkillConstellation />
             </div>
 
@@ -113,13 +144,15 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 1.8, repeat: Infinity }}
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-muted md:block"
-      >
-        <ArrowDown size={22} />
-      </motion.div>
+        {showIndicator && (
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity }}
+                className="fixed bottom-5 left-1/2 z-40 hidden -translate-x-1/2 text-muted md:block"
+              >
+                <ArrowDown size={22} />
+              </motion.div>
+            )}
     </section>
   );
 }

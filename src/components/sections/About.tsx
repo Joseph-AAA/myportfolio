@@ -57,16 +57,16 @@ export default function About() {
           >
            <div className="mx-auto w-full max-w-md">
                 <Image
-                  src="/images/JosephAAAA.png"
+                  src="/images/JosephAAAAA.png"
                   alt="Joseph - Frontend Developer"
                   width={500}
                   height={730}
-                className="relative block aspect-square w-full rounded-3xl
-                object-cover object-top
-                transition-all duration-500
-                hover:[filter:drop-shadow(0_0_12px_rgba(34,211,238,0.5))_drop-shadow(0_0_24px_rgba(99,102,241,0.4))]"
+              className="relative block aspect-square w-full rounded-3xl
+                        object-cover object-top
+                        transition-all duration-500
+                        hover:filter-[drop-shadow(0_0_12px_rgba(34,211,238,0.5))_drop-shadow(0_0_24px_rgba(99,102,241,0.4)]"
                 />
-              </div>
+            </div>
           </motion.div>
 
           {/* About content */}

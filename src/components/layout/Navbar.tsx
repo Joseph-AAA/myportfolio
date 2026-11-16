@@ -26,34 +26,33 @@ export default function Navbar() {
   }, []);
 
   // Detect the currently visible section
-  useEffect(() => {
-    const sections = navLinks
-      .map((link) => document.querySelector(link.href))
-      .filter((section): section is Element => section !== null);
+useEffect(() => {
+  const sections = navLinks
+    .map((link) => document.getElementById(link.href.substring(1)))
+    .filter((section): section is HTMLElement => section !== null);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleSections = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) =>
-              b.intersectionRatio - a.intersectionRatio
-          );
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visibleSections = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort(
+          (a, b) => b.intersectionRatio - a.intersectionRatio
+        );
 
-        if (visibleSections.length > 0) {
-          setActiveSection(visibleSections[0].target.id);
-        }
-      },
-      {
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: [0, 0.1, 0.25, 0.5],
+      if (visibleSections.length > 0) {
+        setActiveSection(visibleSections[0].target.id);
       }
-    );
+    },
+    {
+      rootMargin: "-20% 0px -60% 0px",
+      threshold: [0, 0.1, 0.25, 0.5],
+    }
+  );
 
-    sections.forEach((section) => observer.observe(section));
+  sections.forEach((section) => observer.observe(section));
 
-    return () => observer.disconnect();
-  }, []);
+  return () => observer.disconnect();
+}, []);
 
   return (
     <>

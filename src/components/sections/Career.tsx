@@ -71,7 +71,7 @@ export default function Career() {
                   {/* Timeline Icon */}
                   <div className="relative z-10 flex justify-center md:col-start-2 md:row-start-1">
                     <div
-                      className={`flex h-11 w-11 items-center justify-center rounded-full border border-primary/30 bg-background shadow-[0_0_20px_rgba(34,211,238,0.12)] ${item.accent}`}
+                     className={`flex h-11 w-11 items-center justify-center rounded-full border border-primary/30 bg-background ${item.accent} shadow-[0_0_15px_rgba(34,211,238,0.2),0_0_30px_rgba(168,85,247,0.12)]`}
                     >
                       <Icon size={20} />
                     </div>
@@ -85,15 +85,19 @@ export default function Career() {
                         : "md:col-start-3 md:row-start-1"
                     }`}
                   >
-                    <div className="glass-card relative h-full overflow-hidden rounded-2xl border border-border p-6 transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:shadow-[0_0_25px_rgba(34,211,238,0.12)] sm:p-7">
+                    <div className={`glass-card relative h-full overflow-hidden rounded-2xl border p-6 transition-all duration-500
+                          ${
+                            item.accent === "text-purple-400"
+                              ? "border-purple-400/25 shadow-[0_0_15px_rgba(168,85,247,0.12),0_0_35px_rgba(168,85,247,0.08)] hover:-translate-y-2 hover:border-purple-400/60 hover:shadow-[0_0_25px_rgba(168,85,247,0.3),0_0_55px_rgba(168,85,247,0.18)]"
+                              : "border-cyan-400/25 shadow-[0_0_15px_rgba(34,211,238,0.12),0_0_35px_rgba(34,211,238,0.08)] hover:-translate-y-2 hover:border-cyan-400/60 hover:shadow-[0_0_25px_rgba(34,211,238,0.3),0_0_55px_rgba(34,211,238,0.18)]"
+                          }
+                          sm:p-7`}>
 
                       {/* Decorative Glow */}
                       <div
-                        className={`pointer-events-none absolute -top-16 h-32 w-32 rounded-full opacity-0 blur-[65px] transition-opacity duration-500 group-hover:opacity-50 ${
-                          isLeft
-                            ? "right-0"
-                            : "left-0"
-                        } ${item.background}`}
+                        className={`pointer-events-none absolute -top-16 h-40 w-40 rounded-full opacity-25 blur-[65px] transition-all duration-700 group-hover:scale-125 group-hover:opacity-70 ${
+                                    isLeft ? "right-0" : "left-0"
+                                  } ${item.background}`}
                       />
 
                       <div
