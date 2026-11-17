@@ -6,16 +6,17 @@ import { Redis } from "@upstash/redis";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const redis = Redis.fromEnv();
 
-const ratelimit = new Ratelimit({
-  redis,
-  limiter: Ratelimit.slidingWindow(3, "20 m"),
-  prefix: "portfolio-contact",
-});
 
 export async function POST(request: Request) {
   try {
+        const redis = Redis.fromEnv();
+
+    const ratelimit = new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(3, "20 m"),
+      prefix: "portfolio-contact",
+    });
     // Rate limiting: identify the request IP
     const forwardedFor = request.headers.get("x-forwarded-for");
     const ip =
