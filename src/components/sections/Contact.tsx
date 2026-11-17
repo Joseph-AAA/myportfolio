@@ -130,7 +130,7 @@ export default function Contact() {
                   height={35}
                    style={{
                       width: "auto",
-                      height: "35px",
+                      height: "34px",
                     }}
                 />
                   
