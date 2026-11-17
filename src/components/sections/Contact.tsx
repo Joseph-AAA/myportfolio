@@ -128,6 +128,10 @@ export default function Contact() {
                   alt="GitHub"
                   width={35}
                   height={35}
+                   style={{
+                      width: "auto",
+                      height: "35px",
+                    }}
                 />
                   
                 </div>

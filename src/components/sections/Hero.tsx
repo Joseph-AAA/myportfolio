@@ -96,7 +96,11 @@ useEffect(() => {
                     alt="GitHub"
                     width={48}
                     height={48}
-                    className="h-10 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.25)] transition-all duration-300 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.65)] sm:h-12 sm:w-auto"
+                     style={{
+                      width: "auto",
+                      height: "40px",
+                    }}
+                    className="object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.25)] transition-all duration-300 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.65)]"
                   />
                 </Link>
 
@@ -111,9 +115,13 @@ useEffect(() => {
                   <Image
                     src="/images/skills/LinkeIn.png"
                     alt="LinkedIn"
-                    width={48}
-                    height={48}
-                    className="h-10 w-auto object-contain drop-shadow-[0_0_8px_rgba(10,102,194,0.35)] transition-all duration-300 group-hover:drop-shadow-[0_0_16px_rgba(10,102,194,0.75)] sm:h-12 sm:w-auto"
+                    width={40}
+                    height={40}
+                    style={{
+                      width: "auto",
+                      height: "37px",
+                    }}
+                    className="object-contain drop-shadow-[0_0_8px_rgba(10,102,194,0.35)] transition-all duration-300 group-hover:drop-shadow-[0_0_16px_rgba(10,102,194,0.75)] "
                   />
                 </Link>
 
