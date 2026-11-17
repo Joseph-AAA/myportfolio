@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 
@@ -20,39 +20,45 @@ const navLinks = [
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const isNavigating = useRef(false);
 
   const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
   }, []);
 
-  // Detect the currently visible section
-useEffect(() => {
-  const sections = navLinks
-    .map((link) => document.getElementById(link.href.substring(1)))
-    .filter((section): section is HTMLElement => section !== null);
+  // Detect the active section based on its position
+    useEffect(() => {
+      const updateActiveSection = () => {
+        if (isNavigating.current) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const visibleSections = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort(
-          (a, b) => b.intersectionRatio - a.intersectionRatio
-        );
+        const sections = navLinks
+          .map((link) => document.getElementById(link.href.substring(1)))
+          .filter((section): section is HTMLElement => section !== null);
 
-      if (visibleSections.length > 0) {
-        setActiveSection(visibleSections[0].target.id);
-      }
-    },
-    {
-      rootMargin: "-20% 0px -60% 0px",
-      threshold: [0, 0.1, 0.25, 0.5],
-    }
-  );
+        const activationPoint = 140;
 
-  sections.forEach((section) => observer.observe(section));
+        const currentSection = sections
+          .filter(
+            (section) => section.getBoundingClientRect().top <= activationPoint
+          )
+          .at(-1);
 
-  return () => observer.disconnect();
-}, []);
+        setActiveSection(currentSection?.id ?? "home");
+      };
+
+      updateActiveSection();
+
+      window.addEventListener("scroll", updateActiveSection, {
+        passive: true,
+      });
+
+      window.addEventListener("resize", updateActiveSection);
+
+      return () => {
+        window.removeEventListener("scroll", updateActiveSection);
+        window.removeEventListener("resize", updateActiveSection);
+      };
+    }, []);
 
   return (
     <>
@@ -78,9 +84,14 @@ useEffect(() => {
                 <Link
                   key={link.label}
                   href={link.href}
-                  onClick={() =>
-                    setActiveSection(link.href.substring(1))
-                  }
+                  onClick={() => {
+                    isNavigating.current = true;
+                    setActiveSection(link.href.substring(1));
+
+                    window.setTimeout(() => {
+                      isNavigating.current = false;
+                    }, 800);
+                  }}
                   aria-current={isActive ? "location" : undefined}
                   className={`rounded-lg border px-3 py-2 text-sm font-medium transition-all duration-300 ${
                     isActive

@@ -15,15 +15,68 @@ import Image from "next/image";
 
 export default function Contact() {
   const [formStatus, setFormStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isError, setIsError] = useState(false);
+ 
+const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsError(false);
 
-  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  setIsSubmitting(true);
+  setFormStatus("");
 
-    setFormStatus(
-      "The contact form is ready. Email delivery will be connected next."
-    );
-  };
+  const form = e.currentTarget;
+  const formData = new FormData(form);
 
+  const contactData = {
+  name: formData.get("name"),
+  email: formData.get("email"),
+  subject: formData.get("subject"),
+  message: formData.get("message"),
+  website: formData.get("website"),
+};
+
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(contactData),
+    });
+
+    const data = await response.json();
+
+   if (!response.ok) {
+      if (response.status === 429 && data.retryAfter) {
+        const minutes = Math.ceil(data.retryAfter / 60);
+
+        throw new Error(
+          `You've reached the submission limit. Please wait ${minutes} ${
+            minutes === 1 ? "minute" : "minutes"
+          } before trying again.`
+        );
+      }
+
+      throw new Error(data.error || "Failed to send your message.");
+    }
+
+    setFormStatus(data.message);
+    form.reset();
+      } catch (error) {
+        setIsError(true);
+        setFormStatus(
+          error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again."
+        );
+      } finally {
+        setIsSubmitting(false);
+      }
+    };
+
+
+  
   return (
     <section
       id="contact"
@@ -193,6 +246,25 @@ export default function Contact() {
               onSubmit={handleSubmit}
               className="space-y-5"
             >
+
+              {/* Honeypot field - anti-spam */}
+              <div
+                aria-hidden="true"
+                className="absolute -left-[9999px] h-px w-px overflow-hidden"
+              >
+                <label htmlFor="website">
+                  Leave this field empty
+                </label>
+
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+              
               {/* Name */}
               <div>
                 <label
@@ -263,6 +335,7 @@ export default function Contact() {
                   id="message"
                   name="message"
                   rows={5}
+                  maxLength={2000}
                   placeholder="Write your message..."
                   required
                   className="w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-muted/70 focus:border-primary focus:ring-2 focus:ring-primary/10"
@@ -270,11 +343,13 @@ export default function Contact() {
               </div>
 
               {/* Submit */}
+                            
               <button
                 type="submit"
-                className="group flex w-full items-center justify-center gap-3 rounded-xl bg-primary px-6 py-3.5 font-semibold text-primary-foreground transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_20px_rgba(34,211,238,0.25)]"
+                disabled={isSubmitting}
+                className="group flex w-full items-center justify-center gap-3 rounded-xl bg-primary px-6 py-3.5 font-semibold text-primary-foreground transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_20px_rgba(34,211,238,0.25)] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
 
                 <Send
                   size={18}
@@ -282,10 +357,13 @@ export default function Contact() {
                 />
               </button>
 
+
               {formStatus && (
                 <p
                   role="status"
-                  className="text-center text-sm text-primary"
+                 className={`text-center text-sm ${
+                  isError ? "text-red-500" : "text-emerald-500"
+                }`}
                 >
                   {formStatus}
                 </p>
