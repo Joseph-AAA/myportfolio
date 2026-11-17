@@ -4,7 +4,7 @@ import { Resend } from "resend";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+
 
 
 
@@ -97,8 +97,9 @@ export async function POST(request: Request) {
     }
 
     const recipient = process.env.CONTACT_EMAIL;
+    const apiKey = process.env.RESEND_API_KEY;
 
-    if (!recipient || !process.env.RESEND_API_KEY) {
+    if (!recipient || !apiKey) {
       console.error("Contact email environment variables are missing.");
 
       return NextResponse.json(
@@ -107,6 +108,7 @@ export async function POST(request: Request) {
       );
     }
 
+    const resend = new Resend(apiKey);
     // Send email through Resend
     const { error } = await resend.emails.send({
       from: "Portfolio Contact <portfolio@mycodeacademy.my>",
