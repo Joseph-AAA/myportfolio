@@ -7,24 +7,23 @@ import { Code2, Lightbulb, Rocket } from "lucide-react";
 const highlights = [
   {
     icon: Code2,
-    title: "Frontend Development",
+    title: "Frontend & Full-Stack Development",
     description:
-      "Building responsive and interactive web applications with modern frontend technologies.",
+      "Building responsive, user-friendly web applications and applying frontend and backend technologies to develop functional solutions.",
   },
   {
     icon: Lightbulb,
     title: "Continuous Learning",
     description:
-      "Continuously improving my skills and exploring better ways to build web applications.",
+      "Actively improving my technical skills, embracing constructive feedback, and learning modern development practices to grow as a developer.",
   },
   {
     icon: Rocket,
-    title: "Project Driven",
+    title: "Teamwork & Collaboration",
     description:
-      "Turning ideas into practical projects and learning through real-world development challenges.",
+      "Working collaboratively, taking responsibility for assigned tasks, sharing ideas, and learning from experienced developers to achieve shared goals.",
   },
 ];
-
 export default function About() {
   return (
     <section id="about" className="relative pt-8 pb-16 sm:pt-10 sm:pb-24">
@@ -56,18 +55,17 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="md:sticky md:top-28 md:self-start"
           >
-            <div className="relative mx-auto max-w-md">
-              <div className="absolute -inset-4 rounded-[30px] bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl" />
-
-              <div className="glass-card relative overflow-hidden rounded-[30px]">
+           <div className="mx-auto w-full max-w-md">
                 <Image
-                  src="/images/JosephAright.png"
+                  src="/images/JosephAAAAA.png"
                   alt="Joseph - Frontend Developer"
                   width={500}
-                  height={750}
-                  className="aspect-[5/5] w-full object-cover object-top"
+                  height={730}
+              className="relative block aspect-square w-full rounded-3xl
+                        object-cover object-top
+                        transition-all duration-500
+                        hover:filter-[drop-shadow(0_0_12px_rgba(34,211,238,0.5))_drop-shadow(0_0_24px_rgba(99,102,241,0.4)]"
                 />
-              </div>
             </div>
           </motion.div>
 
@@ -84,25 +82,38 @@ export default function About() {
                  <span className="text-gradient">Web Development</span>
               </h3>
 
-              <div className="space-y-4 text-center leading-8 text-muted md:text-left">
+             <div className="space-y-4 text-center leading-8 text-muted md:text-left">
                 <p>
-                  Hello! I&apos;m Joseph, a frontend developer passionate about
-                  creating responsive, user-friendly, and engaging web
-                  applications.
+                  Hello! I&apos;m Joseph, a developer focused on building modern
+                  web applications, with a strong foundation in frontend
+                  development and practical experience in full-stack development.
                 </p>
 
                 <p>
-                  I work with technologies such as React, Next.js, TypeScript,
-                  JavaScript, and Tailwind CSS. I enjoy building projects,
-                  solving problems, and continuously improving my development
-                  skills.
+                  I work with React, Next.js, TypeScript, and Tailwind CSS to
+                  create responsive, user-friendly interfaces. My experience
+                  also extends to backend development, where I&apos;ve worked
+                  with Node.js, Express.js, Prisma, and PostgreSQL to build APIs,
+                  integrate databases, and implement application functionality.
                 </p>
 
                 <p>
-                  My goal is to create meaningful digital experiences while
-                  growing as a developer and exploring modern web technologies.
+                  Through hands-on projects, I&apos;ve gained practical
+                  experience developing complete applications, integrating
+                  frontend and backend systems, implementing authentication,
+                  and working with database-driven features.
                 </p>
-              </div>
+
+                <p>
+                  As an aspiring developer, I value continuous learning,
+                  constructive feedback, and teamwork. I&apos;m eager to learn
+                  from experienced developers, contribute to shared goals,
+                  take ownership of my responsibilities, and continuously
+                  improve my technical skills. I believe good communication,
+                  mutual respect, and a willingness to learn are essential
+                to becoming a valuable team member.
+              </p>
+            </div>
             </motion.div>
 
             {/* Highlight cards */}
@@ -120,7 +131,8 @@ export default function About() {
                       duration: 0.6,
                       delay: index * 0.15,
                     }}
-                    className="glass-card flex gap-5 rounded-2xl p-5 transition-colors hover:border-primary/50"
+                    className="glass-card flex gap-5 rounded-2xl p-5 
+                              transition-all duration-500 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_0_15px_rgba(34,211,238,0.25),0_0_30px_rgba(34,211,238,0.15)]"
                   >
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                       <Icon size={24} />

@@ -2,48 +2,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import SkillConstellation from "@/components/ui/SkillConstellation";
+import { skillGroups } from "@/data/skills";
 
-const skillGroups = [
-  {
-    title: "Frontend Development",
-    description: "Building responsive and interactive user interfaces.",
-    skills: [
-      "HTML5",
-      "CSS3",
-      "Sass",
-      "JavaScript",
-      "TypeScript",
-      "React",
-      "Next.js",
-      "Tailwind CSS",
-      "React Router",
-    ],
-  },
-  {
-    title: "Backend & Database",
-    description: "Building APIs and working with databases.",
-    skills: [
-      "Node.js",
-      "Express.js",
-      "Prisma",
-      "PostgreSQL",
-      "REST APIs",
-    ],
-  },
-  {
-    title: "Tools & Deployment",
-    description: "Development tools and deployment workflows.",
-    skills: [
-      "Git",
-      "GitHub",
-      "VS Code",
-      "Vercel",
-      "npm",
-      "Vite",
-    ],
-  },
-];
 
 export default function Skills() {
   return (
@@ -70,13 +30,15 @@ export default function Skills() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl leading-8 text-muted">
-            Technologies and tools I use to build modern,
-            responsive, and user-friendly web applications.
+            My technical toolkit spans frontend and backend development,
+            including the technologies and tools I use to build responsive
+            interfaces, develop application functionality, and integrate
+            complete web solutions.
           </p>
         </motion.div>
 
         {/* Skill categories */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 ">
           {skillGroups.map((group, index) => (
             <motion.div
               key={group.title}
@@ -87,7 +49,11 @@ export default function Skills() {
                 duration: 0.6,
                 delay: index * 0.15,
               }}
-             className="glass-card rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_12px_35px_rgba(59,130,246,0.18)]"
+             className="glass-card rounded-2xl border border-border p-6
+                        transition-all duration-500
+                        hover:-translate-y-1
+                        hover:border-primary/50
+                        hover:shadow-[0_0_20px_rgba(34,211,238,0.25),0_0_45px_rgba(99,102,241,0.22)]"
             >
               <h3 className="mb-3 text-xl font-bold">
                 {group.title}

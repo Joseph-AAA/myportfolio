@@ -173,70 +173,90 @@ export default function SkillConstellation() {
             </text>
 
         {/* Technology nodes */}
-        {technologies.map((tech, index) => (
-          <motion.g
-            key={tech.name}
-            style={{ cursor: "pointer" }}
-            onHoverStart={() => setActiveSkill(tech)}
-            onHoverEnd={() => setActiveSkill(null)}
-            onTap={() =>
-              setActiveSkill((current) =>
-                current?.name === tech.name ? null : tech
-              )
-            }
-            whileHover={{ scale: 1.12 }}
-          >
-            {/* Random glowing outer ring */}
-            <motion.circle
-              cx={tech.x}
-              cy={tech.y}
-              r="11"
-              fill="none"
-              stroke={tech.color}
-              strokeWidth="0.8"
-              animate={{
-                r: [11, 13.5, 11],
-                strokeOpacity: [0.15, 0.85, 0.15],
-                strokeWidth: [0.5, 1.2, 0.5],
-              }}
-              transition={{
-                duration: 3 + (index % 3),
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: index * 0.8,
-              }}
-            />
+      
+{/* Technology nodes */}
+{technologies.map((tech, index) => (
+  <motion.g
+    key={tech.name}
+    style={{ cursor: "pointer" }}
+    onHoverStart={() => setActiveSkill(tech)}
+    onHoverEnd={() => setActiveSkill(null)}
+    onTap={() =>
+      setActiveSkill((current) =>
+        current?.name === tech.name ? null : tech
+      )
+    }
+  >
+    {/* Visual elements */}
+    <motion.g
+      whileHover={{ scale: 1.12 }}
+      style={{
+        transformBox: "fill-box",
+        transformOrigin: "center",
+      }}
+    >
+      {/* Glowing outer ring */}
+      <motion.circle
+        cx={tech.x}
+        cy={tech.y}
+        r="11"
+        fill="none"
+        stroke={tech.color}
+        strokeWidth="0.8"
+        animate={{
+          r: [11, 13.5, 11],
+          strokeOpacity: [0.15, 0.85, 0.15],
+          strokeWidth: [0.5, 1.2, 0.5],
+        }}
+        transition={{
+          duration: 3 + (index % 3),
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: index * 0.8,
+        }}
+      />
 
-            {/* Main node circle */}
-            <circle
-              cx={tech.x}
-              cy={tech.y}
-              r="8.5"
-              fill="rgba(30,41,59,0.8)"
-              stroke={tech.color}
-              strokeOpacity="0.65"
-              strokeWidth="0.7"
-            />
+      {/* Main node circle */}
+      <circle
+        cx={tech.x}
+        cy={tech.y}
+        r="8.5"
+        fill="rgba(30,41,59,0.8)"
+        stroke={tech.color}
+        strokeOpacity="0.65"
+        strokeWidth="0.7"
+      />
 
-            {/* Node symbol */}
-                <foreignObject
-                    x={tech.x - 5}
-                    y={tech.y - 5}
-                    width="10"
-                    height="10"
-                    >
-                    <div className="flex h-full w-full items-center justify-center">
-                        <Image
-                        src={tech.image}
-                        alt={tech.name}
-                        width={40}
-                        height={40}
-                        className="h-full w-full object-contain"
-                        />
-                    </div>
-                </foreignObject>
-            </motion.g>
-            ))}
+      {/* Node symbol */}
+      <foreignObject
+        x={tech.x - 5}
+        y={tech.y - 5}
+        width="10"
+        height="10"
+      >
+        <div className="flex h-full w-full items-center justify-center">
+          <Image
+            src={tech.image}
+            alt={tech.name}
+            width={40}
+            height={40}
+            className="h-full w-full object-contain"
+          />
+        </div>
+      </foreignObject>
+    </motion.g>
+
+    {/* Stable hover target */}
+    <circle
+      cx={tech.x}
+      cy={tech.y}
+      r="15"
+      fill="transparent"
+      pointerEvents="all"
+    />
+  </motion.g>
+))}
+
       </svg>
 
       {/* Hover information box */}

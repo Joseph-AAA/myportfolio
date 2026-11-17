@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 
@@ -19,10 +19,46 @@ const navLinks = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const isNavigating = useRef(false);
 
   const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
   }, []);
+
+  // Detect the active section based on its position
+    useEffect(() => {
+      const updateActiveSection = () => {
+        if (isNavigating.current) return;
+
+        const sections = navLinks
+          .map((link) => document.getElementById(link.href.substring(1)))
+          .filter((section): section is HTMLElement => section !== null);
+
+        const activationPoint = 140;
+
+        const currentSection = sections
+          .filter(
+            (section) => section.getBoundingClientRect().top <= activationPoint
+          )
+          .at(-1);
+
+        setActiveSection(currentSection?.id ?? "home");
+      };
+
+      updateActiveSection();
+
+      window.addEventListener("scroll", updateActiveSection, {
+        passive: true,
+      });
+
+      window.addEventListener("resize", updateActiveSection);
+
+      return () => {
+        window.removeEventListener("scroll", updateActiveSection);
+        window.removeEventListener("resize", updateActiveSection);
+      };
+    }, []);
 
   return (
     <>
@@ -32,22 +68,41 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="#home"
+            onClick={() => setActiveSection("home")}
             className="text-2xl font-bold tracking-tight"
           >
             Joseph<span className="text-primary">.</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden items-center gap-8 md:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-muted transition-colors hover:text-primary"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div className="hidden items-center gap-2 md:flex">
+            {navLinks.map((link) => {
+              const isActive =
+                activeSection === link.href.substring(1);
+
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => {
+                    isNavigating.current = true;
+                    setActiveSection(link.href.substring(1));
+
+                    window.setTimeout(() => {
+                      isNavigating.current = false;
+                    }, 800);
+                  }}
+                  aria-current={isActive ? "location" : undefined}
+                  className={`rounded-lg border px-3 py-2 text-sm font-medium transition-all duration-300 ${
+                    isActive
+                      ? "border-primary/20 bg-primary/10 text-primary"
+                      : "border-transparent text-muted hover:border-primary/10 hover:bg-primary/5 hover:text-primary"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Actions */}
