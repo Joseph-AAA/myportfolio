@@ -21,7 +21,13 @@ export default function CursorParticles() {
 
   useEffect(() => {
     const handlePointerMove = (event: PointerEvent) => {
-      if (event.pointerType !== "mouse") return;
+      if (
+          event.pointerType !== "mouse" &&
+          event.pointerType !== "touch" &&
+          event.pointerType !== "pen"
+        ) {
+          return;
+        }
 
       // Update cursor position
       setCursor({
