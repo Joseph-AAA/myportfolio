@@ -40,6 +40,7 @@ export const skillGroups = [
       "Vercel",
       "npm",
       "Vite",
+      "Docker"
     ],
   },
 ];
