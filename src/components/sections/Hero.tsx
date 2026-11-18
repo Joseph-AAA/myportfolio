@@ -7,7 +7,7 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 import SkillConstellation from "../ui/SkillConstellation";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
+import { Download } from "lucide-react";
 export default function Hero() {
   const [showIndicator, setShowIndicator] = useState(true);
 
@@ -74,9 +74,14 @@ useEffect(() => {
 
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3 font-semibold transition-colors hover:border-primary hover:text-primary"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3 font-semibold
+                          transition-[transform,translate,border-color,color]
+                          duration-500 ease-in-out
+                          hover:-translate-y-1
+                          hover:border-primary
+                          hover:text-primary"
               >
-                  Let{"'"}s Build Together
+                Let{"'"}s Build Together
               </Link>
             </div>
 
@@ -124,6 +129,26 @@ useEffect(() => {
                     className="object-contain drop-shadow-[0_0_8px_rgba(10,102,194,0.35)] transition-all duration-300 group-hover:drop-shadow-[0_0_16px_rgba(10,102,194,0.75)] "
                   />
                 </Link>
+                <a
+                  href="/resume/Joseph-Resume.pdf"
+                  download="Joseph-Resume.pdf"
+                  className="group hidden items-center gap-2.5
+                            rounded-lg border border-cyan-400/40
+                            bg-cyan-400/5 px-3 py-2
+                            text-sm font-semibold text-cyan-300
+                            transition-[transform,translate,border-color,background-color,box-shadow]
+                            duration-300 ease-in-out
+                            hover:-translate-y-1
+                            hover:border-cyan-400
+                            hover:bg-cyan-400/10
+                            hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]"
+                >
+                  <Download
+                    size={19}
+                    className="transition-transform duration-300 group-hover:translate-y-0.5"
+                  />
+                  <span>Download Resume</span>
+              </a>
 
             </div>
         </motion.div>

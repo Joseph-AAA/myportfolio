@@ -39,21 +39,25 @@ export default function Skills() {
 
         {/* Skill categories */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 ">
-          {skillGroups.map((group, index) => (
-            <motion.div
-              key={group.title}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.15,
-              }}
-             className="glass-card rounded-2xl border border-border p-6
-                        transition-all duration-500
-                        hover:-translate-y-1
-                        hover:border-primary/50
-                        hover:shadow-[0_0_20px_rgba(34,211,238,0.25),0_0_45px_rgba(99,102,241,0.22)]"
+          
+        {skillGroups.map((group, index) => (
+          <motion.div
+            key={group.title}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 0.7,
+              delay: 0.1,
+            }}
+          >
+            <div
+              className="glass-card h-full rounded-2xl border border-border p-6
+                          transition-[transform,translate,border-color,box-shadow]
+                          duration-500 ease-in-out
+                          hover:-translate-y-1
+                          hover:border-primary/50
+                          hover:shadow-[0_0_20px_rgba(34,211,238,0.25),0_0_45px_rgba(99,102,241,0.22)]"
             >
               <h3 className="mb-3 text-xl font-bold">
                 {group.title}
@@ -64,16 +68,9 @@ export default function Skills() {
               </p>
 
               <div className="flex flex-wrap gap-3">
-                {group.skills.map((skill, skillIndex) => (
+                {group.skills.map((skill) => (
                   <motion.span
                     key={skill}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.3,
-                      delay: skillIndex * 0.05,
-                    }}
                     whileHover={{ scale: 1.08, y: -3 }}
                     className="cursor-default rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
                   >
@@ -81,8 +78,10 @@ export default function Skills() {
                   </motion.span>
                 ))}
               </div>
-            </motion.div>
-          ))}
+            </div>
+          </motion.div>
+        ))}
+
         </div>
       </div>
     </section>

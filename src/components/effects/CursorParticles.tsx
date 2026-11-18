@@ -14,56 +14,113 @@ type Particle = {
 export default function CursorParticles() {
   const [particles, setParticles] = useState<Particle[]>([]);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const [isTouching, setIsTouching] = useState(false);
+  const [isMouseActive, setIsMouseActive] = useState(false);
 
   const particleId = useRef(0);
   const lastSpawnTime = useRef(0);
   const colorIndex = useRef(0);
 
   useEffect(() => {
-    const handlePointerMove = (event: PointerEvent) => {
-      if (
-          event.pointerType !== "mouse" &&
-          event.pointerType !== "touch" &&
-          event.pointerType !== "pen"
-        ) {
-          return;
-        }
-
-      // Update cursor position
-      setCursor({
-        x: event.clientX,
-        y: event.clientY,
-      });
-
+    // Generate particles
+    const spawnParticle = (x: number, y: number) => {
       const now = performance.now();
 
-      // Limit particle creation frequency
       if (now - lastSpawnTime.current < 35) return;
 
       lastSpawnTime.current = now;
 
       const newParticle: Particle = {
         id: particleId.current++,
-        x: event.clientX,
-        y: event.clientY,
+        x,
+        y,
         color: colorIndex.current++ % 2 === 0 ? "cyan" : "purple",
       };
 
-      setParticles((current) => [
-        ...current.slice(-19),
-        newParticle,
-      ]);
+      setParticles((current) => [...current.slice(-19), newParticle]);
     };
 
+    // Desktop mouse tracking
+    const handlePointerMove = (event: PointerEvent) => {
+      if (event.pointerType !== "mouse") return;
+
+      setIsMouseActive(true);
+
+      setCursor({
+        x: event.clientX,
+        y: event.clientY,
+      });
+
+      spawnParticle(event.clientX, event.clientY);
+    };
+
+    // Mobile touch start
+    const handleTouchStart = (event: TouchEvent) => {
+      const touch = event.changedTouches[0];
+      if (!touch) return;
+
+      lastSpawnTime.current = 0;
+      setIsTouching(true);
+
+      setCursor({
+        x: touch.clientX,
+        y: touch.clientY,
+      });
+
+      spawnParticle(touch.clientX, touch.clientY);
+    };
+
+    // Mobile touch movement
+    const handleTouchMove = (event: TouchEvent) => {
+      const touch = event.touches[0];
+      if (!touch) return;
+
+      setCursor({
+        x: touch.clientX,
+        y: touch.clientY,
+      });
+
+      spawnParticle(touch.clientX, touch.clientY);
+    };
+
+    // Hide touch glow when the finger is lifted
+    const handleTouchEnd = (event: TouchEvent) => {
+      if (event.touches.length === 0) {
+        setIsTouching(false);
+      }
+    };
+
+    // Register event listeners
     window.addEventListener("pointermove", handlePointerMove, {
       passive: true,
     });
 
+    document.addEventListener("touchstart", handleTouchStart, {
+      passive: true,
+      capture: true,
+    });
+
+    document.addEventListener("touchmove", handleTouchMove, {
+      passive: true,
+      capture: true,
+    });
+
+    document.addEventListener("touchend", handleTouchEnd, {
+      passive: true,
+      capture: true,
+    });
+
+    // Cleanup event listeners
     return () => {
       window.removeEventListener("pointermove", handlePointerMove);
+
+      document.removeEventListener("touchstart", handleTouchStart, true);
+      document.removeEventListener("touchmove", handleTouchMove, true);
+      document.removeEventListener("touchend", handleTouchEnd, true);
     };
   }, []);
 
+  // Remove completed particles
   const removeParticle = (id: number) => {
     setParticles((current) =>
       current.filter((particle) => particle.id !== id)
@@ -76,10 +133,7 @@ export default function CursorParticles() {
       {particles.map((particle) => (
         <motion.span
           key={particle.id}
-          initial={{
-            opacity: 0.9,
-            scale: 0.6,
-          }}
+          initial={{ opacity: 0.9, scale: 0.6 }}
           animate={{
             opacity: 0,
             scale: 1.5,
@@ -104,12 +158,13 @@ export default function CursorParticles() {
         />
       ))}
 
-      {/* Glowing cursor circle */}
+      {/* Cursor and touch glow */}
       <motion.div
         className="absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full"
         animate={{
           left: cursor.x,
           top: cursor.y,
+          opacity: isTouching || isMouseActive ? 1 : 0,
         }}
         transition={{
           type: "tween",

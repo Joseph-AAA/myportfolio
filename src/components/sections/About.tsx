@@ -115,7 +115,7 @@ export default function About() {
               </p>
             </div>
             </motion.div>
-
+            
             {/* Highlight cards */}
             <div className="space-y-4">
               {highlights.map((item, index) => {
@@ -131,26 +131,34 @@ export default function About() {
                       duration: 0.6,
                       delay: index * 0.15,
                     }}
-                    className="glass-card flex gap-5 rounded-2xl p-5 
-                              transition-all duration-500 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_0_15px_rgba(34,211,238,0.25),0_0_30px_rgba(34,211,238,0.15)]"
                   >
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                      <Icon size={24} />
-                    </div>
+                    <div className="glass-card flex gap-5 rounded-2xl p-5
+                                    transition-[transform,translate,border-color,box-shadow]
+                                    duration-500 ease-in-out
+                                    hover:-translate-y-1
+                                    hover:border-primary/60
+                                    hover:shadow-[0_0_15px_rgba(34,211,238,0.25),0_0_30px_rgba(34,211,238,0.15)]">
 
-                    <div>
-                      <h4 className="mb-2 font-semibold text-foreground">
-                        {item.title}
-                      </h4>
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                        <Icon size={24} />
+                      </div>
 
-                      <p className="text-sm leading-7 text-muted">
-                        {item.description}
-                      </p>
+                      <div>
+                        <h4 className="mb-2 font-semibold text-foreground">
+                          {item.title}
+                        </h4>
+
+                        <p className="text-sm leading-7 text-muted">
+                          {item.description}
+                        </p>
+                      </div>
+
                     </div>
                   </motion.div>
                 );
               })}
             </div>
+
           </div>
         </div>
       </div>

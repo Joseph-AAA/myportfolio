@@ -68,7 +68,16 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="#home"
-            onClick={() => setActiveSection("home")}
+            onClick={() => {
+              setActiveSection("home");
+
+              if (window.location.hash === "#home") {
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }
+            }}
             className="text-2xl font-bold tracking-tight"
           >
             Joseph<span className="text-primary">.</span>
@@ -84,14 +93,21 @@ export default function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  onClick={() => {
-                    isNavigating.current = true;
-                    setActiveSection(link.href.substring(1));
+                 onClick={() => {
+                      isNavigating.current = true;
+                      setActiveSection(link.href.substring(1));
 
-                    window.setTimeout(() => {
-                      isNavigating.current = false;
-                    }, 800);
-                  }}
+                      // Handle clicking the current hash again
+                      if (window.location.hash === link.href) {
+                        document
+                          .getElementById(link.href.substring(1))
+                          ?.scrollIntoView({ behavior: "smooth" });
+                      }
+
+                      window.setTimeout(() => {
+                        isNavigating.current = false;
+                      }, 800);
+                    }}
                   aria-current={isActive ? "location" : undefined}
                   className={`rounded-lg border px-3 py-2 text-sm font-medium transition-all duration-300 ${
                     isActive
