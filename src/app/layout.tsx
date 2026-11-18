@@ -4,10 +4,15 @@ import ThemeProvider from "@/components/providers/ThemeProvider";
 import CursorParticles from "@/components/effects/CursorParticles";
 
 
+
 export const metadata: Metadata = {
   title: "Joseph | Frontend & Full-Stack Developer",
   description:
     "Portfolio of Joseph, a Frontend and Full-Stack Developer building modern web applications with React, Next.js, TypeScript, Node.js, Express.js, PostgreSQL, and Prisma.",
+
+  verification: {
+    google: "X1FyQbx9gZroO39u-Sxp_tufVmFoaTb7xscE6lf_Els",
+  },
 
   openGraph: {
     title: "Joseph | Frontend & Full-Stack Developer",
@@ -25,6 +30,7 @@ export const metadata: Metadata = {
       "Frontend and Full-Stack Developer building modern web applications with React, Next.js, TypeScript, and Node.js.",
   },
 };
+
 
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
