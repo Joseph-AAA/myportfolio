@@ -112,9 +112,9 @@ export default function CursorParticles() {
           top: cursor.y,
         }}
         transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 30,
+          type: "tween",
+          duration: 0.08,
+          ease: "linear",
         }}
         style={{
           backgroundColor: "#22D3EE",
