@@ -260,37 +260,44 @@ export default function SkillConstellation() {
       </svg>
 
       {/* Hover information box */}
+        
+        {/* Hover information box */}
         {activeSkill && (
-                <motion.div
-                        key={activeSkill.name}
-                        initial={{ opacity: 0, scale: 0.85 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.2 }}
-                        className="pointer-events-none absolute z-30 min-w-36 rounded-xl border border-primary/40 bg-card/95 px-4 py-3 text-center shadow-[0_0_25px_rgba(59,130,246,0.25)] backdrop-blur-md"
-                        style={{
-                        left: `${activeSkill.x}%`,
-                        top: `${activeSkill.y}%`,
-                        transform: `translate(
-                            ${activeSkill.x < 50 ? "12px" : "calc(-100% - 12px)"},
-                            ${
-                            activeSkill.y < 50
-                                ? "8px"
-                                : activeSkill.y > 50
-                                ? "calc(-100% - 8px)"
-                                : "-50%"
-                            }
-                        )`,
-                        }}
-                    >
-                        <p className="font-bold text-foreground">
-                        {activeSkill.name}
-                        </p>
+          <div
+            key={activeSkill.name}
+            className="pointer-events-none absolute z-30"
+            style={{
+              left: `${activeSkill.x}%`,
+              top: `${activeSkill.y}%`,
+              transform: `translate(
+                ${activeSkill.x < 50 ? "12px" : "calc(-100% - 12px)"},
+                ${
+                  activeSkill.y < 50
+                    ? "8px"
+                    : activeSkill.y > 50
+                      ? "calc(-100% - 8px)"
+                      : "-50%"
+                }
+              )`,
+            }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.2 }}
+              className="min-w-36 rounded-xl border border-primary/40 bg-card/95 px-4 py-3 text-center shadow-[0_0_25px_rgba(59,130,246,0.25)] backdrop-blur-md"
+            >
+              <p className="font-bold text-foreground">
+                {activeSkill.name}
+              </p>
 
-                        <p className="mt-1 whitespace-nowrap font-mono text-sm font-semibold text-primary">
-                        {activeSkill.proficiency}% Proficiency
-                        </p>
-                </motion.div>
-                )}
+              <p className="mt-1 whitespace-nowrap font-mono text-sm font-semibold text-primary">
+                {activeSkill.proficiency}% Proficiency
+              </p>
+            </motion.div>
+          </div>
+        )}
+
     </div>
   );
 }
