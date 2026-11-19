@@ -130,9 +130,9 @@ useEffect(() => {
                   />
                 </Link>
                 <a
-                  href="/resume/Joseph-Resume.pdf"
-                  download="Joseph-Resume.pdf"
-                  className="group hidden items-center gap-2.5
+                  href="/Joseph - (Frontend & Full-Stack Developer).pdf"
+                  download="Joseph-Frontend & Full-Stack Developer (Resume).pdf"
+                  className="group inline-flex items-center gap-2.5
                             rounded-lg border border-cyan-400/40
                             bg-cyan-400/5 px-3 py-2
                             text-sm font-semibold text-cyan-300
