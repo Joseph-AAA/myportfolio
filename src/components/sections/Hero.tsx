@@ -59,7 +59,7 @@ useEffect(() => {
             </h2>
 
             <p className="mx-auto mt-5 max-w-xl leading-8 text-muted lg:mx-0">
-                I build responsive, user-friendly web applications using React, Next.js, and TypeScript, with practical experience in backend development using Node.js, Express.js, and PostgreSQL. I enjoy turning ideas into functional applications by combining thoughtful user experiences with reliable application functionality.
+               I build responsive, user-friendly applications using React, Next.js, and TypeScript, with backend experience in Node.js, Express.js, and PostgreSQL. I enjoy turning ideas into functional applications by combining thoughtful user experiences with reliable backend functionality.
             </p>
 
             {/* Buttons */}
